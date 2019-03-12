@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>IdentityKeys</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Sam Barnes</Authors>
+    <Company>Factom Inc.</Company>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Base58Check" Version="0.2.0" />
+    <PackageReference Include="dlech.Chaos.NaCl" Version="0.1.0.0" />
+  </ItemGroup>
+
+</Project>
