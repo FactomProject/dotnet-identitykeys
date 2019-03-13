@@ -2,13 +2,8 @@
 
 A small module of tools to generate and use key pairs for Factom Identities.
 
-## WARNING!
-
-Although this has been checked manually for functionality and compatibility with other existing implementations, no official unit tests have been added yet. Do not yet use in production.
-
 ## Usage
-To install this module from nuget, run the following:
-```$ ```
+Install this package from nuget: https://www.nuget.org/packages/IdentityKeys
 
 Generating a new random key pair and getting the idpub/idec key strings:
 ```csharp

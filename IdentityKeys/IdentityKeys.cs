@@ -8,11 +8,12 @@ namespace IdentityKeys
     public class PrivateIdentityKey
     {
         public static readonly byte[] PREFIX = new byte[] { 0x03, 0x45, 0xf3, 0xd0, 0xd6 };
+        public const int SEED_LENGTH = 32;
         public byte[] Seed { get; set; }
 
         public PrivateIdentityKey()
         {
-            Seed = new byte[32];
+            Seed = new byte[SEED_LENGTH];
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
             rng.GetBytes(Seed);
         }
@@ -22,7 +23,7 @@ namespace IdentityKeys
             if (seed == null) {
                 throw new System.ArgumentException("Parameter cannot be null", "seed");
             }
-            else if (seed.Length != 32)
+            else if (seed.Length != SEED_LENGTH)
             {
                 throw new System.ArgumentException("Parameter must be 32 bytes long", "seed");
             }
@@ -47,7 +48,7 @@ namespace IdentityKeys
             {
                 throw new System.ArgumentException("Invalid private key string", "keyString");
             }
-            Seed = new byte[32];
+            Seed = new byte[SEED_LENGTH];
             System.Buffer.BlockCopy(withPrefix, PrivateIdentityKey.PREFIX.Length, Seed, 0, Seed.Length);
         }
         
@@ -73,6 +74,7 @@ namespace IdentityKeys
     public class PublicIdentityKey
     {
         public static readonly byte[] PREFIX = new byte[] { 0x03, 0x45, 0xef, 0x9d, 0xe0 };
+        public const int KEY_LENGTH = 32;
         public byte[] Bytes { get; set; }
 
         public PublicIdentityKey(byte[] bytes)
@@ -80,7 +82,7 @@ namespace IdentityKeys
             if (bytes == null) {
                 throw new System.ArgumentException("Parameter cannot be null", "bytes");
             }
-            else if (bytes.Length != 32)
+            else if (bytes.Length != KEY_LENGTH)
             {
                 throw new System.ArgumentException("Parameter must be 32 bytes long", "bytes");
             }
@@ -104,7 +106,7 @@ namespace IdentityKeys
             {
                 throw new System.ArgumentException("Invalid public key string", "keyString");
             }
-            Bytes = new byte[32];
+            Bytes = new byte[KEY_LENGTH];
             System.Buffer.BlockCopy(withPrefix, PublicIdentityKey.PREFIX.Length, Bytes, 0, Bytes.Length);
         }
 
